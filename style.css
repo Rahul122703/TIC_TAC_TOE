@@ -6,12 +6,18 @@
 :root {
   --container_height: calc(50vh);
 }
+
+@font-face {
+  font-family: comicFont;
+  src: url(./Hey\ Comic.ttf);
+}
+
 body {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: comicFont;
   box-sizing: border-box;
 }
 
