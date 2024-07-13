@@ -38,6 +38,12 @@ body {
   transition-duration: 0.1s;
 }
 
+@media (max-width: 400px) {
+  .modal {
+    margin-top: 15px;
+  }
+}
+
 button {
   /* border: 2px solid black; */
   width: 50%;
@@ -105,6 +111,19 @@ button:hover {
 
 .cellx {
   display: hidden;
-  /* border: 2px solid black; */
   aspect-ratio: 1/1;
+}
+.reset {
+  margin-top: 4vh;
+  border: 2px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  border-radius: 1rem;
+  display: none;
+}
+.reset:hover {
+  background: rgb(109, 136, 255);
+  color: white;
 }

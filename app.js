@@ -1,4 +1,6 @@
 ///http://127.0.0.1:5500/tic_tac_toe/index.html
+let turn = 1;
+let is_single_match;
 
 const cells = document.querySelectorAll(".cell");
 const msg = document.querySelector(".msg_container");
@@ -6,6 +8,7 @@ const msg = document.querySelector(".msg_container");
 const modal = document.querySelector(".modal");
 const single_button = document.querySelector(".single");
 const two_button = document.querySelector(".two");
+const reset = document.querySelector(".reset");
 
 function check_win() {
   const winning_conditions = [
@@ -83,30 +86,30 @@ function check_win() {
   ];
   let draw = 0;
   cells.forEach((cell) => {
-    if (cell.textContent == "X" || cell.textContent == "0") {
+    if (cell.textContent == "X" || cell.textContent == "o") {
       draw++;
     }
   });
   if (draw == 9) {
     msg.textContent = "DRAW";
+    // reset.style.display = "flex";
   }
   winning_conditions.forEach((condition) => {
     if (condition[0][0]) {
+      // reset.style.display = "flex";
       condition[1].forEach((currentItem) => {
         currentItem.classList.add("shadow");
         currentItem.style.transform = "scale(1.1)";
+        currentItem.style.color = "black";
       });
       msg.textContent =
-        condition[1][0].textContent == "X" ? "X WINS!!" : `0 WINS!!`;
+        condition[1][0].textContent == "X" ? "X WINS!!" : `o WINS!!`;
       cells.forEach((cell) => {
         cell.replaceWith(cell.cloneNode(true));
       });
     }
   });
 }
-
-let turn = 1;
-let is_single_match;
 
 single_button.addEventListener("click", () => {
   modal.style.display = "none";
@@ -129,7 +132,7 @@ function getRandomNumber(array) {
 
 cells.forEach((cell) => {
   cell.addEventListener("click", () => {
-    if (cell.textContent == "X" || cell.textContent == "0") {
+    if (cell.textContent == "X" || cell.textContent == "o") {
       const temp_text = msg.textContent;
       msg.textContent = `OCCUPIED`;
       setTimeout(() => {
@@ -137,13 +140,13 @@ cells.forEach((cell) => {
       }, 500);
     } else if (turn++ % 2) {
       cell.textContent = "X";
-      msg.textContent = `0's Turn`;
+      msg.textContent = `o's Turn`;
     } else {
-      cell.textContent = "0";
+      cell.textContent = "o";
       msg.textContent = `X's Turn`;
     }
     const options = [...cells].filter((cell) => {
-      if (!(cell.textContent == "X" || cell.textContent == "0")) {
+      if (!(cell.textContent == "X" || cell.textContent == "o")) {
         return cell;
       }
     });
@@ -152,7 +155,7 @@ cells.forEach((cell) => {
       turn--;
       const chosen = options[Math.floor(Math.random() * options.length)];
       console.log(chosen);
-      chosen.textContent = "0";
+      chosen.textContent = "o";
       msg.textContent = `Your Turn`;
       check_win();
     }
