@@ -1,0 +1,104 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --container_height: calc(50vh);
+}
+body {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+.modal {
+  background: rgb(109, 136, 255);
+  border: 2px solid rgb(0, 17, 253);
+  position: absolute;
+  z-index: 10;
+  height: calc(50vh);
+  aspect-ratio: 1/1;
+  top: 22%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+  transition: all;
+  transition-duration: 0.1s;
+}
+
+button {
+  /* border: 2px solid black; */
+  width: 50%;
+  height: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+  margin-top: 5%;
+  font-weight: bold;
+}
+
+button:hover {
+  background: #818181;
+  color: white;
+}
+
+.all_container {
+  border: 2px solid lime;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+}
+
+.msg_container {
+  border: 2px solid black;
+  height: calc(45vh - var(--container_height) / 2);
+  aspect-ratio: 4/1;
+  margin-top: 2vh;
+  border-radius: 1rem;
+  font-size: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid_container {
+  /* margin-top: calc(50vh - var(--container_height) / 2); */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  height: var(--container_height);
+  aspect-ratio: 1 / 1;
+  border-radius: 1rem;
+}
+.cell {
+  box-sizing: border-box;
+  border: 1px solid black;
+  aspect-ratio: 1/1;
+  font-size: 6.1rem;
+  border-radius: 1rem;
+  text-align: center;
+  background: rgb(109, 136, 255);
+  color: white;
+  transition: all;
+  transition-duration: 0.1s;
+}
+.cell:hover {
+  border: 5px solid rgb(0, 17, 253);
+  box-shadow: 5px 5px 5px black;
+}
+
+.shadow {
+  box-shadow: 5px 5px 5px black;
+}
+
+.cellx {
+  display: hidden;
+  /* border: 2px solid black; */
+  aspect-ratio: 1/1;
+}
