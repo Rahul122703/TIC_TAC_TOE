@@ -1,7 +1,7 @@
 ///http://127.0.0.1:5500/tic_tac_toe/index.html
 let turn = 1;
 let is_single_match;
-
+let winning_cells;
 const cells = document.querySelectorAll(".cell");
 const msg = document.querySelector(".msg_container");
 
@@ -10,6 +10,9 @@ const single_button = document.querySelector(".single");
 const two_button = document.querySelector(".two");
 const reset = document.querySelector(".reset");
 
+reset.addEventListener("click", () => {
+  location.reload();
+});
 function check_win() {
   const winning_conditions = [
     [
@@ -92,11 +95,12 @@ function check_win() {
   });
   if (draw == 9) {
     msg.textContent = "DRAW";
-    // reset.style.display = "flex";
+    reset.style.display = "flex";
   }
   winning_conditions.forEach((condition) => {
     if (condition[0][0]) {
-      // reset.style.display = "flex";
+      reset.style.display = "flex";
+      winning_cells = condition[1];
       condition[1].forEach((currentItem) => {
         currentItem.classList.add("shadow");
         currentItem.style.transform = "scale(1.1)";
@@ -129,36 +133,40 @@ msg.style.width = `${
 function getRandomNumber(array) {
   return Math.floor(Math.random() * array.length);
 }
-
-cells.forEach((cell) => {
-  cell.addEventListener("click", () => {
-    if (cell.textContent == "X" || cell.textContent == "o") {
-      const temp_text = msg.textContent;
-      msg.textContent = `OCCUPIED`;
-      setTimeout(() => {
-        msg.textContent = temp_text;
-      }, 500);
-    } else if (turn++ % 2) {
-      cell.textContent = "X";
-      msg.textContent = `o's Turn`;
-    } else {
-      cell.textContent = "o";
-      msg.textContent = `X's Turn`;
-    }
-    const options = [...cells].filter((cell) => {
-      if (!(cell.textContent == "X" || cell.textContent == "o")) {
-        return cell;
+function cellEvents() {
+  cells.forEach((cell) => {
+    cell.addEventListener("click", () => {
+      let occ = 1;
+      if (cell.textContent == "X" || cell.textContent == "o") {
+        occ = 0;
+        const temp_text = msg.textContent;
+        msg.textContent = `OCCUPIED`;
+        setTimeout(() => {
+          msg.textContent = temp_text;
+        }, 500);
+      } else if (turn++ % 2) {
+        occ = 1;
+        cell.textContent = "X";
+        msg.textContent = `o's Turn`;
+      } else {
+        cell.textContent = "o";
+        msg.textContent = `X's Turn`;
       }
-    });
-    console.log(options);
-    if (is_single_match && options.length > 0) {
-      turn--;
-      const chosen = options[Math.floor(Math.random() * options.length)];
-      console.log(chosen);
-      chosen.textContent = "o";
-      msg.textContent = `Your Turn`;
+      const options = [...cells].filter((cell) => {
+        if (!(cell.textContent == "X" || cell.textContent == "o")) {
+          return cell;
+        }
+      });
+      if (is_single_match && options.length > 0 && occ) {
+        occ = 1;
+        turn--;
+        const chosen = options[Math.floor(Math.random() * options.length)];
+        chosen.textContent = "o";
+        msg.textContent = `Your Turn`;
+        check_win();
+      }
       check_win();
-    }
-    check_win();
+    });
   });
-});
+}
+cellEvents();

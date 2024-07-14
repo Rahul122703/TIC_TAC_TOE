@@ -38,12 +38,6 @@ body {
   transition-duration: 0.1s;
 }
 
-@media (max-width: 400px) {
-  .modal {
-    margin-top: 15px;
-  }
-}
-
 button {
   /* border: 2px solid black; */
   width: 50%;
@@ -92,13 +86,22 @@ button:hover {
   box-sizing: border-box;
   border: 1px solid black;
   aspect-ratio: 1/1;
-  font-size: 6.1rem;
+  font-size: 6rem;
   border-radius: 1rem;
   text-align: center;
   background: rgb(109, 136, 255);
   color: white;
   transition: all;
   transition-duration: 0.1s;
+}
+
+@media (max-width: 400px) {
+  .modal {
+    margin-top: 15px;
+  }
+  .cell {
+    font-size: 4.2rem;
+  }
 }
 .cell:hover {
   border: 5px solid rgb(0, 17, 253);
@@ -115,13 +118,14 @@ button:hover {
 }
 .reset {
   margin-top: 4vh;
-  border: 2px solid black;
-  display: flex;
+  margin-left: 15px;
+  /* border: 2px solid black; */
+  display: none;
   justify-content: center;
   align-items: center;
   height: 50px;
+  width: 100px;
   border-radius: 1rem;
-  display: none;
 }
 .reset:hover {
   background: rgb(109, 136, 255);
