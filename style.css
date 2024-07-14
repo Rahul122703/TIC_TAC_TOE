@@ -1,6 +1,8 @@
 * {
   margin: 0;
   padding: 0;
+  transition: all;
+  transition-duration: 0.5s;
 }
 
 :root {
@@ -21,6 +23,10 @@ body {
   box-sizing: border-box;
 }
 
+.body_dark {
+  background: black;
+}
+
 .modal {
   background: rgb(109, 136, 255);
   border: 2px solid rgb(0, 17, 253);
@@ -34,8 +40,13 @@ body {
   justify-content: center;
   align-items: center;
   border-radius: 1rem;
-  transition: all;
-  transition-duration: 0.1s;
+  /* transition: all;
+  transition-duration: 0.5s; */
+}
+
+.modal_dark {
+  background: rgb(51, 51, 51);
+  border: 2px solid grey;
 }
 
 button {
@@ -74,6 +85,11 @@ button:hover {
   align-items: center;
 }
 
+.msg_container_dark {
+  border: 2px solid rgb(133, 133, 133);
+  color: rgb(196, 195, 195);
+}
+
 .grid_container {
   /* margin-top: calc(50vh - var(--container_height) / 2); */
   display: grid;
@@ -93,6 +109,11 @@ button:hover {
   color: white;
   transition: all;
   transition-duration: 0.1s;
+}
+
+.cell_dark {
+  background: grey;
+  color: black;
 }
 
 @media (max-width: 400px) {
@@ -127,7 +148,32 @@ button:hover {
   width: 100px;
   border-radius: 1rem;
 }
+
+.reset_dark {
+  background: grey;
+}
 .reset:hover {
   background: rgb(109, 136, 255);
   color: white;
+}
+
+.dark_mode {
+  margin-top: 4vh;
+  margin-left: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 100px;
+  border-radius: 1rem;
+}
+.dark_mode:hover {
+  background: rgb(109, 136, 255);
+  color: white;
+}
+
+.dark_image,
+.retry_image {
+  height: 100%;
+  width: 100%;
 }
