@@ -1,6 +1,6 @@
 ///http://127.0.0.1:5500/tic_tac_toe/index.html
 let turn = 1;
-let darK_mode_const = 1;
+let dark_mode_const = 1;
 let is_single_match;
 let winning_cells;
 let is_dark_mode = false;
@@ -15,7 +15,7 @@ const reset = document.querySelector(".reset");
 const dark_button = document.querySelector(".dark_mode");
 
 dark_button.addEventListener("click", () => {
-  is_dark_mode = darK_mode_const++ % 2 ? true : false;
+  is_dark_mode = dark_mode_const++ % 2 ? true : false;
   console.log(is_dark_mode);
   modal.classList.toggle("modal_dark");
   reset.classList.toggle("reset_dark");
@@ -123,19 +123,16 @@ function check_win() {
       condition[1].forEach((currentItem) => {
         currentItem.classList.add("shadow");
         currentItem.style.transform = "scale(1.1)";
-
-        currentItem.style.color = "black";
         currentItem.style.color = `${is_dark_mode ? "white" : "black"}`;
         currentItem.style.border = `5px solid ${
           is_dark_mode ? "white" : "black"
         }`;
-        currentItem.style.border = "${}";
       });
       msg.textContent =
         condition[1][0].textContent == "X" ? "X WINS!!" : `o WINS!!`;
-      // cells.forEach((cell) => {
-      //   cell.replaceWith(cell.cloneNode(true));
-      // });
+      cells.forEach((cell) => {
+        cell.replaceWith(cell.cloneNode(true));
+      });
     }
   });
 }
