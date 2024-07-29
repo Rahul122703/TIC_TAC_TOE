@@ -27,22 +27,27 @@ dark_button.addEventListener("click", () => {
   const image = document.querySelector(".dark_image");
   image.src = `${is_dark_mode ? "./sun.svg" : "./moon.svg"}`;
 });
+let check_win_interval = setInterval(check_win, 100);
 
 reset.addEventListener("click", () => {
-  // location.reload();
-  //123
   turn = 1;
-  cells = document.querySelectorAll(".cell");
   cells.forEach((cell) => {
-    console.log("here");
+    cell.replaceWith(cell.cloneNode(true));
+  });
+  cells = document.querySelectorAll(".cell");
+
+  cells.forEach((cell) => {
     cell.textContent = "";
     modal.style.display = "flex";
     msg.textContent = "TIC TAC TOE";
     cell.classList.remove("cell_hover");
   });
+
   cellEvents();
   is_single_match = null;
+  check_win_interval = setInterval(check_win, 100);
 });
+
 function check_win() {
   const winning_conditions = [
     [
@@ -129,13 +134,13 @@ function check_win() {
   }
   winning_conditions.forEach((condition) => {
     if (condition[0][0]) {
-      reset.style.display = "flex";
       winning_cells = condition[1];
       condition[1].forEach((currentItem) => {
         currentItem.classList.add("cell_hover");
       });
       msg.textContent =
         condition[1][0].textContent == "X" ? "X WINS!!" : `o WINS!!`;
+      clearInterval(check_win_interval);
       cells.forEach((cell) => {
         cell.replaceWith(cell.cloneNode(true));
       });
@@ -194,9 +199,9 @@ function cellEvents() {
           chosen.textContent = "o";
           msg.textContent = `Your Turn`;
         }, 500);
-        check_win();
+        // check_win();
       }
-      check_win();
+      // check_win();
     });
   });
 }
