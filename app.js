@@ -26,11 +26,21 @@ dark_button.addEventListener("click", () => {
   msg.classList.toggle("msg_container_dark");
 
   const image = document.querySelector(".dark_image");
-  image.src = `${is_dark_mode ? "./sun.svg" : "./moon.svg"}`;
+  image.src = `$d{is_dark_mode ? "./sun.svg" : "./moon.svg"}`;
 });
 
 reset.addEventListener("click", () => {
-  location.reload();
+  //123
+  // location.reload();
+  cells = document.querySelectorAll(".cell");
+  cells.forEach((cell) => {
+    console.log("here");
+    cell.textContent = "";
+    modal.style.display = "flex";
+    msg.textContent = "TIC TAC TOE";
+    cell.classList.remove("cell_hover");
+  });
+  cellEvents();
 });
 function check_win() {
   const winning_conditions = [
@@ -122,19 +132,12 @@ function check_win() {
       winning_cells = condition[1];
       condition[1].forEach((currentItem) => {
         currentItem.classList.add("cell_hover");
-        // currentItem.style.transform = "scale(1.1)";
-        // currentItem.style.color = `${is_dark_mode ? "white" : "black"}`;
-        // currentItem.style.border = `5px solid ${
-        //   is_dark_mode ? "white" : "black"
-        // }`;
       });
       msg.textContent =
         condition[1][0].textContent == "X" ? "X WINS!!" : `o WINS!!`;
       cells.forEach((cell) => {
         cell.replaceWith(cell.cloneNode(true));
       });
-      // cells = document.querySelectorAll(".cell");
-      console.log(cells[0]);
     }
   });
 }
