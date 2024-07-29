@@ -137,7 +137,7 @@ button:hover {
   margin-top: 4vh;
   margin-left: 15px;
   /* border: 2px solid black; */
-  display: none;
+  display: flex;
   justify-content: center;
   align-items: center;
   height: 50px;

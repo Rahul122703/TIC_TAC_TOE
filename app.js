@@ -7,7 +7,6 @@ let is_dark_mode = false;
 
 let cells = document.querySelectorAll(".cell");
 const msg = document.querySelector(".msg_container");
-
 const modal = document.querySelector(".modal");
 const single_button = document.querySelector(".single");
 const two_button = document.querySelector(".two");
@@ -26,12 +25,13 @@ dark_button.addEventListener("click", () => {
   msg.classList.toggle("msg_container_dark");
 
   const image = document.querySelector(".dark_image");
-  image.src = `$d{is_dark_mode ? "./sun.svg" : "./moon.svg"}`;
+  image.src = `${is_dark_mode ? "./sun.svg" : "./moon.svg"}`;
 });
 
 reset.addEventListener("click", () => {
-  //123
   // location.reload();
+  //123
+  turn = 1;
   cells = document.querySelectorAll(".cell");
   cells.forEach((cell) => {
     console.log("here");
@@ -41,6 +41,7 @@ reset.addEventListener("click", () => {
     cell.classList.remove("cell_hover");
   });
   cellEvents();
+  is_single_match = null;
 });
 function check_win() {
   const winning_conditions = [
