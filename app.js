@@ -7,6 +7,7 @@ let is_dark_mode = false;
 
 let cells = document.querySelectorAll(".cell");
 const msg = document.querySelector(".msg_container");
+const msg_width = msg.getBoundingClientRect().width;
 const modal = document.querySelector(".modal");
 const single_button = document.querySelector(".single");
 const two_button = document.querySelector(".two");
@@ -199,9 +200,7 @@ function cellEvents() {
           chosen.textContent = "o";
           msg.textContent = `Your Turn`;
         }, 500);
-        // check_win();
       }
-      // check_win();
     });
   });
 }

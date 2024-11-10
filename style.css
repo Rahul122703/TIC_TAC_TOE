@@ -91,10 +91,9 @@ button:hover {
 }
 
 .grid_container {
-  /* margin-top: calc(50vh - var(--container_height) / 2); */
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  height: var(--container_height);
+  max-width: var(--container_height);
   aspect-ratio: 1 / 1;
   border-radius: 1rem;
 }
@@ -102,13 +101,15 @@ button:hover {
   box-sizing: border-box;
   border: 1px solid black;
   aspect-ratio: 1/1;
-  font-size: 6rem;
+  font-size: 4rem;
   border-radius: 1rem;
-  text-align: center;
   background: rgb(109, 136, 255);
   color: white;
   transition: all;
   transition-duration: 0.1s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .cell_dark {
